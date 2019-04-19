@@ -1,0 +1,114 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: linen;
+}
+
+td {
+    border-top-style: solid;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Single-instance version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="Screenshots/Test3.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>135</td>
+    <td>31268014</td>
+    <td>4678978</td>
+    <td>This is considered the baseline and should be the fastest of the connections on this port</td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="Screenshots/Test4.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>132</td>
+    <td>352268014</td>
+    <td>5340158</td>
+    <td>The higher the amount of threads the slower the average time will be</td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTPS/10 threads</td>
+    <td><img src="Screenshots/Test5.png" alt="Graph Results Screenshot Case 3" style="width:304px;height:228px;"></td>
+    <td>135</td>
+    <td>352379813</td>
+    <td>5340512</td>
+    <td>Due to the security from this case, HTTPS slows down the runtime of the average query because of its overhead</td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No prepared statements</td>
+    <td><img src="Screenshots/Test1.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>130</td>
+    <td>352268014</td>
+    <td>5270158</td>
+    <td>This case is similar to case 2 except it requires no prepared statements. Normal statements were used instead and therefore takes longer than case 2</td>
+  </tr>
+  <tr>
+    <td>Case 5: HTTP/10 threads/No connection pooling</td>
+    <td><img src="Screenshots/Test2.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>132</td>
+    <td>374269024</td>
+    <td>5340158</td>
+    <td>With no connection pooling the average should be marginally slower and that was the case because of the fact that we are not recycling connections</td>
+  </tr>
+
+</table> 
+
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Scaled version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="Screenshots/Test8.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>136</td>
+    <td>4859436</td>
+    <td>4364088</td>
+    <td>This is the baseline for the 80 port, the 80 port tends to be faster than the 8080 port</td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="Screenshots/Test9.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>134</td>
+    <td>4799773</td>
+    <td>5231342</td>
+    <td>In this case the average was a little bit faster however the TJ slowed down quite a lot while the TS stayed relatively the same</td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTP/10 threads/No prepared statements</td>
+    <td><img src="Screenshots/Test6.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>131</td>
+    <td>4683232</td>
+    <td>5232645</td>
+    <td>With no prepared statements, the run times were relatively the same, I think it might be because of the simplicity of the prepared statement, therefore having not much to improve upon</td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No connection pooling</td>
+    <td><img src="Screenshots/Test7.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>132</td>
+    <td>5046869</td>
+    <td>5597700</td>
+    <td>This is the slowest of them all because connection pooling allows for multiple connection recycling which speeds up the runtime significantly</td>
+  </tr>
+
+</table> 
+
+</body>
+</html>

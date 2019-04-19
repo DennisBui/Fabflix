@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+<title>Main Page</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+#search_box {
+  padding: 6px;
+  border: none;
+  font-size: 17px;
+  border-radius: 5px;
+}
+#search_box_css {
+  float: right;
+  margin-top: 8px;
+}
+
+#autocomplete {
+  padding: 6px;
+  border: none;
+  font-size: 17px;
+  border-radius: 5px;
+}
+
+#auto_box_css{
+	float:right;
+	margin-top: 8px;
+}
+
+#button_css {
+    float: right;
+    padding: 7px;
+}
+
+tr {
+	border-style: hidden;
+}
+
+img {
+  height: 600px;
+}
+
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="index.html">About</a></li>
+  <li style="float: right; padding-top: 7px;">
+  	<!-- <button type="button" class="btn btn-primary" onClick="logOut(event)">
+	  Log out
+	</button>
+  </li> -->
+  <li style="float: right; padding-top: 7px; padding-right: 7px;">
+  	<button type="button" class="btn btn-primary" onClick="window.location.href = 'shoppingCart.html?' ">
+	  Cart
+	</button>
+  </li>
+  <li style="float:right;">
+  <!-- Example single danger button -->
+<div style="margin-top:7px; position:inherit; z-index: 1;" class="btn-group">
+  <button style="margin-right: 6px;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Browse
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenterBrowseTitle">Browse by Title</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenterBrowseGenre">Browse by Genre</a>
+  </div>
+</div>
+  </li>
+  <!-- Button trigger modal -->
+  <li id="button_css">
+  	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+	  Advanced Search
+	</button>
+  </li>
+  <li id="search_box_css">
+  	<input id="autocomplete" type="text" placeholder="Search by title..">
+  </li>
+</ul>
+  	
+        
+<div class="jumbotron">
+  <h1 class="display-4">Main Page</h1>
+  <p class="lead">The best site for looking up movies</p>
+</div>
+<!-- 
+	  <div style="padding-left: 30%; padding-right: 30%">
+		<table style="border-radius: 10px;"
+			class="table table-sm table-dark table-bordered table-hover table-striped">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Year</th>
+					<th>Director</th>
+					<th>List of genres</th>
+					<th>List of stars</th>
+					<th>Rating</th>
+				</tr>
+			</thead>
+			<tbody id=movie_table_body></tbody>
+		</table>
+	</div>
+	-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Advanced Search</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text"  placeholder="Search by title.." id="search_title" name="title" aria-label="Search">
+		</div>
+		<div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text"  placeholder="Search by year.." id="search_year" name="year" aria-label="Search">
+		</div>
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text" placeholder="Search by director.." id="search_director" name="director" aria-label="Search">
+		</div>
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text" placeholder="Search by star's name.." id="search_starName" name="starName" aria-label="Search">
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button id="buttonPressed" type="button" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenterBrowseTitle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Browse By Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenterBrowseGenre" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Browse By Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:50%; height: 50%; float:left;">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="http://www.savethecat.com/wp-content/uploads/2014/08/GOTG_wpw_Poster.jpg" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="http://rookerville.com/wp-content/uploads/2016/05/Captain-America-The-Winter-Soldier-HD-Wallpaper1-1080x675.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://bostonhassle.com/wp-content/uploads/2018/04/civilwar1.jpg" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://nerdist.com/wp-content/uploads/2015/04/Avengers-Age-review-042915-970x545.jpg" alt="Fourth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="http://www.justinkownacki.com/wp-content/uploads/2013/11/Thor-The-Dark-World-Poster.jpg" alt="Fifth slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" style="width:50%; height: 50%; float:right;">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://cdn.vox-cdn.com/thumbor/y_zQVlSf3T9JXNsdTVZ-V1lDZCc=/0x227:1688x1688/1200x675/filters:focal(731x663:1001x933)/cdn.vox-cdn.com/uploads/chorus_image/image/60222205/InfinityWar5aabd55fed5fa.0.jpg" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://boygeniusreport.files.wordpress.com/2018/12/avengers-endgame-poster.jpg?quality=98&strip=all" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://wptsradio.org/wp-content/uploads/2018/02/Black-Panther-movie-characters.jpg" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://cdn-images-1.medium.com/max/1680/1*2BXuHrr37-INSlfwujBK0w.jpeg" alt="Fourth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://theblemish.com/images/2018/03/justice-league.jpg" alt="Fifth slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+
+</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="index.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+	<script src="auto-complete.js?ver1.1"></script> 
+</body>
+</html>

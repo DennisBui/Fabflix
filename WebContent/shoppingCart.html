@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shopping Cart</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<link rel="stylesheet" href="shoppingCart.css">
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+#search_box {
+  padding: 6px;
+  border: none;
+  font-size: 17px;
+  border-radius: 5px;
+}
+#search_box_css {
+  float: right;
+  margin-top: 8px;
+}
+
+#button_css {
+    float: right;
+    padding: 7px;
+}
+
+tr {
+	border-style: hidden;
+}
+
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="index.html">About</a></li>
+  <!--<li style="float: right; padding-top: 7px;">
+  	<button type="button" class="btn btn-primary" onClick="logOut(event)">
+	  Log out
+	</button>
+  </li>
+   -->
+  <li style="float: right; padding-top: 7px; padding-right: 7px;">
+  	<button type="button" class="btn btn-primary" onClick="window.location.href = 'shoppingCart.html?' ">
+	  Cart
+	</button>
+  </li>  
+  <!-- <li style="float:right;">
+<div style="margin-top:7px; position:inherit; z-index: 1;" class="btn-group">
+  <button style="margin-right: 6px;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Browse
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenterBrowseTitle">Browse by Title</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenterBrowseGenre">Browse by Genre</a>
+  </div>
+</div>
+  </li>
+  <li id="button_css">
+  	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+	  Advanced Search
+	</button>
+  </li>
+  <li id="search_box_css">
+  	<input id="search_box" type="text" placeholder="Search by title.." required>
+  </li>
+-->
+</ul>
+
+<div class="jumbotron">
+  <h1 class="display-4">Shopping Cart</h1>
+  <p class="lead">View your item(s)</p>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Advanced Search</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text"  placeholder="Search by title.." id="search_title" name="title" aria-label="Search">
+		</div>
+		<div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text"  placeholder="Search by year.." id="search_year" name="year" aria-label="Search">
+		</div>
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text" placeholder="Search by director.." id="search_director" name="director" aria-label="Search">
+		</div>
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text" placeholder="Search by star's name.." id="search_starName" name="starName" aria-label="Search">
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button id="buttonPressed" type="button" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenterBrowseTitle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Browse By Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenterBrowseGenre" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Browse By Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://use.fontawesome.com/c560c025cf.js"></script>
+<div class="container">
+   <div class="card shopping-cart">
+            <div class="card-header bg-dark text-light">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Shopping cart
+                <a class="btn btn-outline-info btn-sm pull-right" href="index.html">Continue shopping</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="card-body">
+        
+
+            </div>
+            <div class="card-footer">
+				<div class="pull-right" style="margin: 10px">
+                    <button class="btn btn-success" onclick="javascript:window.location.href='checkout.html'">Checkout</button>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- include jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- include our own JS file -->
+<script src="shoppingCart.js"></script>
+
+</body>
+</html>

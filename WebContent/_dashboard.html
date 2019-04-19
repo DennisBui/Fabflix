@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+#navbar_ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+#search_box {
+  padding: 6px;
+  border: none;
+  font-size: 17px;
+  border-radius: 5px;
+}
+
+#search_box_css {
+  float: right;
+  margin-top: 8px;
+}
+tr {
+	border-style: hidden;
+}
+
+#button_css {
+    float: right;
+    padding: 7px;
+}
+</style>
+</head>
+
+<body>
+<ul id="navbar_ul">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="index.html">About</a></li>
+  
+    <li style="float: right; padding-top: 7px; padding-right: 7px;">
+  	<button type="button" class="btn btn-primary" onClick="window.location.href = 'shoppingCart.html?' ">
+	  Cart
+	</button>
+  </li>
+    <li style="float:right;">
+  <!-- Example single danger button -->
+<div style="margin-top:7px; position:inherit; z-index: 1;" class="btn-group">
+  <button style="margin-right: 6px;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Show
+  </button>
+</div>
+  </li>
+  </ul>
+<div class="jumbotron">
+  <h1 class="display-4">Dashboard</h1>
+  <p class="lead">Employees Only</p>
+</div>
+
+
+<div style="padding-left: 20%; padding-right: 20%">
+		<table style="border-radius: 10px;"
+			class="table table-sm table-dark table-bordered table-hover table-striped">
+			<thead>
+				<tr>
+					<th>TABLE_NAME</th>
+					<th>COLUMN_NAME</th>
+					<th>DATA_TYPE</th>
+				</tr>
+			</thead>
+			<tbody id=metadata_table></tbody>
+		</table>
+</div>
+
+	<div class = "sweg" style = "padding-left:25%; padding-right: 25%">
+	<div style="width: 650px;
+    height: 750px;
+    border-radius: 10px;
+    background-color: #D1CECD;
+    padding: 20px;">
+	<form id = "new_movie_form" method="post" action = "#" align="center">
+		 <div class="form-group">
+		 	 <h2>Insert New Information</h2>
+		 	 <h5 class = "redder" style = "color:red; float:left"> Fields Required to Add a New Movie</h3>
+		 	 <br>
+		 	 <h5 class = "bluer" style = "color:blue; float:left"> Fields Required to Add a New Star</h3>
+		 	 <br>
+		 	 <br>
+   			 <label for="exampleFormControlInput1" style = "color:red">Movie Title</label>
+   			 <input type="text" class="form-control" name = "new_movie_title" placeholder="The Dark Knight">
+   			 <br>
+   			 <label for="exampleFormControlInput2" style = "color:red">Release Year</label>
+   			 <input type="text" class="form-control" name = "new_release_year" placeholder="2003">
+   			 <br>
+   			 <label for="exampleFormControlInput3" style = "color:red">Director</label>
+   			 <input type="text" class="form-control" name = "new_director" placeholder="Michael Bay">
+   			 <br>
+   			 <label for="exampleFormControlInput4" >Genre</label>
+   			 <input type="text" class="form-control" name = "new_genre" placeholder="Thriller">
+   			 <br>
+   			 <label for="exampleFormControlInput5" style = "color:blue">Star Name</label>
+   			 <input type="text" class="form-control" name = "new_star_name" placeholder="Zac Efron">
+   			 <br>
+   			 <label for="exampleFormControlInput6">Star Birth Year (Optional)</label>
+   			 <input type="text" class="form-control" name = "new_star_birth" placeholder="1983">
+   			 <br>
+   			 <div style="text-align:center;"><input type="submit" value="Insert" class="btn btn-primary"></input></div>
+   			 
+  		</div>
+	</form>
+	</div>
+	</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Advanced Search</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text" placeholder="Search by title.." id="search_title" aria-label="Search">
+		</div>
+		<div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text" placeholder="Search by year.." id="search_year" aria-label="Search">
+		</div>
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text" placeholder="Search by director.." id="search_director" aria-label="Search">
+		</div>
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+		  <input class="form-control" type="text" placeholder="Search by star's name.." id="search_starName" aria-label="Search">
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button id="buttonPressed" type="button" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenterBrowseTitle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Browse By Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenterBrowseGenre" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Browse By Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenterBrowseGenre" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Browse By Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="metadata.js"></script> 
+	<script src="dashboard.js"></script>
+</body>
+</html>

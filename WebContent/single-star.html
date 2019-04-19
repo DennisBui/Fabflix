@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+<title>Single Star Page</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+	crossorigin="anonymous"></script>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+tr {
+	border-style: hidden;
+}
+
+</style>
+</head>
+<body>
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="javascript:history.back()">Go Back</a></li>
+  <li><a href="index.html">About</a></li>
+</ul>
+
+<div class="jumbotron">
+  <h1 class="display-4">Single Star Page</h1>
+  <p class="lead">Show name, year of birth, a list of movies</p>
+</div>
+
+	<div style="padding-left: 30%; padding-right: 30%">
+		<table style="border-radius: 10px;"
+			class="table table-sm table-dark table-bordered table-hover table-striped">
+			<thead>
+				<tr>
+					<th style="border: none;">Name</th>
+					<th>Year of Birth</th>
+					<th style="border: none;">List of Movies</th>
+				</tr>
+			</thead>
+			<tbody id=movie_table_body></tbody>
+		</table>
+	</div>
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="single-star.js"></script>
+</body>
+</html>

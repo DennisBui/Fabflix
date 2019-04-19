@@ -1,0 +1,2 @@
+I use '%...%' for searching titles, years, directors, and stars.
+I use '...%' for browsing titles and genres. 
